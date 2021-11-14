@@ -2,8 +2,8 @@
 ## Waht is Wordpress?
 WordPress is a free and open-source content management system written in PHP and paired with a MySQL or MariaDB database
 ## Installation Guide based on [HowtoForge's Guide](https://www.howtoforge.com/tutorial/how-to-install-wordpress-with-docker-on-ubuntu/)
-**Assumption for setup include a stable internet connection and an already existing Debian based distrabution (Ubuntu 20.04 for me) to setup the PI-Hole**
-1. First update the linux distro and install docker 
+**Assumption for setup include a stable internet connection and an already existing Debian based distribution (Ubuntu 20.04 for me) to setup the PI-Hole**
+1. First update the Linux distro and install docker 
     - The commands to execute this are as follows:
      ```
      sudo apt-get update
@@ -39,15 +39,15 @@ WordPress is a free and open-source content management system written in PHP and
    Exit;
    ```
    - The result should look as such ![DBImage](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/mysql.png)
-4. Begin wordpress container setup 
-    - Fetch the docker install for wordpress with the command `sudo docker pull wordpress:latest`
+4. Begin WordPress container setup 
+    - Fetch the docker install for WordPress with the command `sudo docker pull wordpress:latest`
     - Create a wpcontainer with the following command 
     ```
     docker run -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=pass -e WORDPRESS_DB_NAME=wordpress_db -p 8081:80 -v /root/wordpress/html:/var/www/html --link wordpressdb:mysql --name wpcontainer -d wordpress
     ```
-   - Again note that the user, password, and DB_Name can al be changed in addition with the name of the container 
+   - Again, note that the user, password, and DB_Name can be changed in addition with the name of the container 
    - Find you IP using the command `ip addr show` 
-   - With that IP found issue the command `curl -I [IP]:8081` to check the state of the wordpress container 
+   - With that IP found issue the command `curl -I [IP]:8081` to check the state of the WordPress container 
     - The result should look like ![docker status](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/status.png) 
 5. Install Nginx web server and configure 
   - Install nginx with the command `sudo apt-get install nginx`
@@ -81,6 +81,7 @@ WordPress is a free and open-source content management system written in PHP and
   - Then reset the nginx server `systemctl restart nginx`
 6. Final Installation 
     - Issue the command `curl -I [IP]:8081` once more
-    - Once issued it will take you to an instalation site from your docker to install Wordpress and will request you fill out your information and submit 
-    - Once submitted login, it should now take you to your wordpress installation with your user information looking as such ![Wordpress Installed](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/final.png) with users ![Wordpress User](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/user.png)
-    - ***After this you have completed the docker installation for wordpress***
+    - Once issued it will take you to an installation site from your docker to install WordPress and will request you fill out your information and submit 
+    - Once submitted login, it should now take you to your WordPress installation with your user information looking as such ![Wordpress Installed](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/final.png)
+    - User installed should look like this in addition ![Wordpress User](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/user.png)
+    - ***After this you have completed the docker installation for WordPress***
