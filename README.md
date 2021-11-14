@@ -1,5 +1,5 @@
 # Wordpress Docker Install 
-## Waht is Wordpress?
+## What is Wordpress?
 WordPress is a free and open-source content management system written in PHP and paired with a MySQL or MariaDB database
 ## Installation Guide based on [HowtoForge's Guide](https://www.howtoforge.com/tutorial/how-to-install-wordpress-with-docker-on-ubuntu/)
 **Assumption for setup include a stable internet connection and an already existing Debian based distribution (Ubuntu 20.04 for me) to setup the PI-Hole**
