@@ -80,4 +80,7 @@ WordPress is a free and open-source content management system written in PHP and
   ```
   - Then reset the nginx server `systemctl restart nginx`
 6. Final Installation 
-    - 
+    - Issue the command `curl -I [IP]:8081` once more
+    - Once issued it will take you to an instalation site from your docker to install Wordpress and will request you fill out your information and submit 
+    - Once submitted login, it should now take you to your wordpress installation with your user information looking as such ![Wordpress Installed]() with users ![Wordpress User]()
+    - ***After this you have completed the docker installation for wordpress***
