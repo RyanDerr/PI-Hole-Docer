@@ -38,7 +38,7 @@ WordPress is a free and open-source content management system written in PHP and
    show databases;
    Exit;
    ```
-   - The result should look as such ![DBImage]()
+   - The result should look as such ![DBImage](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/mysql.png)
 4. Begin wordpress container setup 
     - Fetch the docker install for wordpress with the command `sudo docker pull wordpress:latest`
     - Create a wpcontainer with the following command 
@@ -48,7 +48,7 @@ WordPress is a free and open-source content management system written in PHP and
    - Again note that the user, password, and DB_Name can al be changed in addition with the name of the container 
    - Find you IP using the command `ip addr show` 
    - With that IP found issue the command `curl -I [IP]:8081` to check the state of the wordpress container 
-    - The result should look like ![docker status]() 
+    - The result should look like ![docker status](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/status.png) 
 5. Install Nginx web server and configure 
   - Install nginx with the command `sudo apt-get install nginx`
   - Next we'll need to go to the nginx director and add a new virtual host for Wordpress docker container 
@@ -82,5 +82,5 @@ WordPress is a free and open-source content management system written in PHP and
 6. Final Installation 
     - Issue the command `curl -I [IP]:8081` once more
     - Once issued it will take you to an instalation site from your docker to install Wordpress and will request you fill out your information and submit 
-    - Once submitted login, it should now take you to your wordpress installation with your user information looking as such ![Wordpress Installed]() with users ![Wordpress User]()
+    - Once submitted login, it should now take you to your wordpress installation with your user information looking as such ![Wordpress Installed](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/final.png) with users ![Wordpress User](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/user.png)
     - ***After this you have completed the docker installation for wordpress***
