@@ -49,7 +49,7 @@ WordPress is a free and open-source content management system written in PHP and
    - Find you IP using the command `ip addr show` 
    - With that IP found issue the command `curl -I [IP]:8081` to check the state of the WordPress container 
     - The result should look like ![docker status](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/status.png) 
-6. Final Installation 
+5. Final Installation 
     - Issue the command `curl -I [IP]:8081` once more
     - Once issued it will take you to an installation site from your docker to install WordPress and will request you fill out your information and submit 
     - Once submitted login, it should now take you to your WordPress installation with your user information looking as such ![Wordpress Installed](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/final.png)
