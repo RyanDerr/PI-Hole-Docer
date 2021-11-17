@@ -18,7 +18,50 @@ WordPress is a free and open-source content management system written in PHP and
    ```
 2. Next we'll need to start docker 
     - Issue the command `sudo systemctl start docker`
-3. Setup database container, specifically MariaDB
+## Install with Docker-Compose 
+1. First create a directory for wordpress, I used `mkdir ~/wordpress`
+2. Create a yml file within that directory called `docker-compose.yml`
+3. Edit the yml file just created to contain the following information 
+    ```
+    version: "3.9"
+    services:
+    db:
+        image: mysql:5.7
+        volumes:
+          - db_data:/var/lib/mysql
+        restart: always
+        environment:
+          MYSQL_ROOT_PASSWORD: somewordpress
+          MYSQL_DATABASE: wordpress
+          MYSQL_USER: wordpress
+          MYSQL_PASSWORD: wordpress
+   wordpress:
+        depends_on:
+          - db
+        image: wordpress:latest
+        volumes:
+          - wordpress_data:/var/www/html
+        ports:
+          - "8000:80"
+        restart: always
+        environment:
+          WORDPRESS_DB_HOST: db:3306
+          WORDPRESS_DB_USER: wordpress
+          WORDPRESS_DB_PASSWORD: wordpress
+          WORDPRESS_DB_NAME: wordpress
+    volumes:
+       db_data: {}
+       wordpress_data: {}
+    ```
+4. Run `sudo docker-compose up -d` 
+    - This builds and deploys the container you've edited 
+5. Within a web bowser search either `http://localhost:8000` or enter `https://[IP]:8000`
+    - Once issued it will take you to an installation site from your docker to install WordPress and will request you fill out your information and submit 
+    - Once submitted login, it should now take you to your WordPress installation with your user information looking as such ![Wordpress Installed](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/final.png)
+    - User installed should look like this in addition ![Wordpress User](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/user.png)
+    - ***After this you have completed the docker installation for WordPress***
+## Install Without Docker Compose 
+1. Setup database container, specifically MariaDB
     - To install the container issue the command `sudo docker pull mariadb`
     - Next begin creating directories for data storage as such 
     ```
@@ -39,7 +82,7 @@ WordPress is a free and open-source content management system written in PHP and
    Exit;
    ```
    - The result should look as such ![DBImage](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/mysql.png)
-4. Begin WordPress container setup 
+2. Begin WordPress container setup 
     - Fetch the docker install for WordPress with the command `sudo docker pull wordpress:latest`
     - Create a wpcontainer with the following command 
     ```
@@ -49,7 +92,7 @@ WordPress is a free and open-source content management system written in PHP and
    - Find you IP using the command `ip addr show` 
    - With that IP found issue the command `curl -I [IP]:8081` to check the state of the WordPress container 
     - The result should look like ![docker status](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/status.png) 
-5. Final Installation 
+3. Final Installation 
     - Issue the command `curl -I [IP]:8081` once more
     - Once issued it will take you to an installation site from your docker to install WordPress and will request you fill out your information and submit 
     - Once submitted login, it should now take you to your WordPress installation with your user information looking as such ![Wordpress Installed](https://github.com/RyanDerr/Wordpress-Docker/blob/main/Images/final.png)
